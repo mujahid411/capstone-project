@@ -18,36 +18,6 @@ const Login= () => {
   
     let handleSubmit = async (e) => {
       e.preventDefault();
-    //   try {
-    //     let teacherResponse = await axios.post(`/api/teacher/teacherLogin`, {
-    //       ...userLoginData
-    //     });
-    //     if(teacherResponse.data){
-    //         // navigate('/teacherNavbar');
-    //         console.log(teacherResponse.data)
-    //         let token = teacherResponse.data.token
-    //         console.log(token)
-    //         localStorage.setItem('token',token);
-    //     }
-    //     let studentResponse = await axios.post(`/api/student/studentLogin`, {
-    //         ...userLoginData
-    //       });
-    //       if(studentResponse.data){
-    //           navigate('/studentNavbar');
-    //           console.log(studentResponse.data)
-    //           let token = teacherResponse.data.token
-    //           console.log(token);
-    //         localStorage.setItem('token',token);
-    //       }
-    
-    //   } catch (error) {
-    //     console.log('this is a error')
-    //     console.error(error)
-    //     setShowAlert(!showAlert)
-    //     setTimeout(function () {
-    //       setShowAlert(false)
-    //     }, 4000)
-    //   }
      try {
        let response = await axios.post('/api/login/loginUser',{
         ...userLoginData
@@ -106,11 +76,6 @@ const Login= () => {
                                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900" style={{ fontSize: '1.0rem' }}>
                                     Password
                                 </label>
-                                {/* <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
-                  </a>
-                </div> */}
                             </div>
                             <div className="mt-2">
                                 <input

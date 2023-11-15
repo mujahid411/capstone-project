@@ -17,7 +17,7 @@ const DisplayCourse = () => {
                             <p className="mt-0 text-gray-500 dark:text-gray-400">
                                 by travery media   </p>
                             <p className="mt-1 text-gray-500 dark:text-gray-400 bg-indigo-500" style={{ border: '2px solid', height: '4vh', color: 'white' }}>
-                                499rs    </p>
+                                ₹499.00    </p>
                         </div>
                     </a>
                 </div>
@@ -33,7 +33,7 @@ const DisplayCourse = () => {
                             <p className="mt-0 text-gray-500 dark:text-gray-400">
                                 by travery media   </p>
                             <p className=" bg-indigo-500" style={{ border: '2px solid', height: '4vh', color: 'white' }}>
-                                499rs    </p>
+                                ₹499.00    </p>
                         </div>
                     </a>
                 </div>
@@ -49,7 +49,7 @@ const DisplayCourse = () => {
                             <p className="mt-0 text-gray-500 dark:text-gray-400">
                                 by travery media   </p>
                             <p className=" bg-indigo-500" style={{ border: '2px solid', height: '4vh', color: 'white' }}>
-                                499rs    </p>
+                                ₹499.00    </p>
                         </div>
                     </a>
                 </div>
@@ -65,7 +65,7 @@ const DisplayCourse = () => {
                             <p className="mt-0 text-gray-500 dark:text-gray-400">
                                 by travery media   </p>
                             <p className=" bg-indigo-500" style={{ border: '2px solid', height: '4vh', color: 'white' }}>
-                                499rs    </p>
+                                ₹499.00    </p>
                         </div>
                     </a>
                 </div>
@@ -81,7 +81,7 @@ const DisplayCourse = () => {
                             <p className="mt-0 text-gray-500 dark:text-gray-400">
                                 by travery media   </p>
                             <p className=" bg-indigo-500" style={{ border: '2px solid', height: '4vh', color: 'white' }}>
-                                499rs    </p>
+                                ₹499.00    </p>
                         </div>
                     </a>
                 </div>

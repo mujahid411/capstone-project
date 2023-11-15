@@ -4,6 +4,7 @@ import videoRoutes from "./controllers/index.js";
 import teacherRoutes from "./controllers/teacher/index.js"
 import studentRoutes from "./controllers/student/index.js"
 import loginRoutes from './controllers/login/index.js'
+import courseRoutes from './controllers/course/index.js'
 import './dbConnect.js'
 
 
@@ -21,6 +22,7 @@ app.use("/api/videos", videoRoutes);
 app.use("/api/teacher", teacherRoutes);
 app.use("/api/student", studentRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/courses", courseRoutes);
 
 
 

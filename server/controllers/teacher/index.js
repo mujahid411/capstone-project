@@ -1,23 +1,19 @@
 import express from 'express'
 const router = express.Router()
-// import config from "config"
 import TeacherModel from '../../models/TeacherModel.js';
 import  jwt  from 'jsonwebtoken';
 // import { addCourseValidation, teacherRegisteration, userLoginValidations } from '../../middleware/validators/index.js';
-// const jwtkey = config.get('jwt-secret-key')
 
-// let jwtkey = "codeforindia"
 router.post('/teacherRegister',async(req,res)=>{
 try {
-  console.log('from teacher server')
   let   { name, email, password, password2, mobileNumber, address ,description}=req.body
   if (password !== password2) {
     return res.status(400).json({ error: 'password do not match!!' })
 }
-// let findTeacher = await TeacherModel.findOne({ email })
-// if(findTeacher){
-//     res.status(400).json({error:'email already exists please login!!'})
-// }
+let findTeacher = await TeacherModel.findOne({ email })
+if(findTeacher){
+    res.status(400).json({error:'email already exists please login!!'})
+}
 
 let teacherData = {
     name,
