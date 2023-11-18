@@ -18,6 +18,9 @@ import CreateCourse from './components/CreateCourse';
 import TeacherMain from './components/TeacherMain';
 import StudentMain from './components/StudentMain';
 import DisplayCourse from './components/DisplayCourse';
+import CourseForm from './components/CourseForm';
+import SingleCourse from './components/SingleCourse';
+import NewTest from './components/NewTest';
 import('preline')
 function App() {
   return (
@@ -41,6 +44,10 @@ function App() {
       <Route path='/teacherMain' element={<TeacherMain/>}/>
       <Route path='/studentMain' element={<StudentMain/>}/>
       <Route path='/displayCourse' element={<DisplayCourse/>}/>
+      <Route path='/courseForm' element={<CourseForm/>}/>
+      <Route path='/singleCourse' element={<SingleCourse/>}/>
+      <Route path='/new' element={<NewTest/>}/>
+      <Route path='/createCourse/:courseId' element={<CourseForm/>}/>
     </Routes>
 
   )

@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 
  const CreateCourse = () => {
     const navigate = useNavigate();
@@ -18,6 +18,8 @@ import { useNavigate } from 'react-router-dom';
         console.log(courseTitle)
         let response = await axios.post('/api/courses/createCourse',{courseTitle});
         let courseId = response.data.id
+        // courseId = useParams()
+        navigate(`/createCourse/${courseId}`);
         console.log(courseId);
         
        } catch (error) {

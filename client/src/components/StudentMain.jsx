@@ -1,18 +1,18 @@
 import React from 'react'
 import StudentNavBar from './StudentNavBar'
 import Test from './Test'
-import DisplayCourse from './DisplayCourse'
+import SingleCourse from './SingleCourse'
 
 const StudentMain = () => {
   return (
     <div>
         <StudentNavBar/>
         <Test/>
-        <DisplayCourse/>
-        <DisplayCourse/>
-        <DisplayCourse/>
-        <DisplayCourse/>
-        <DisplayCourse/>
+        <SingleCourse/>
+        <SingleCourse/>
+        <SingleCourse/>
+        <SingleCourse/>
+        <SingleCourse/>
     </div>
   )
 }

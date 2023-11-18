@@ -11,6 +11,9 @@ let courseSchema = new mongoose.Schema({
     coursePrice:{
         type:String
     },
+    courseImage:{
+        type:String
+    },
     courseChapters:[],
     courseCategory:{
         type:String
