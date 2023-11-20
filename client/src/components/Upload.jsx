@@ -9,6 +9,7 @@ const Upload = () => {
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const navigate = useNavigate();
 
@@ -41,16 +42,12 @@ const Upload = () => {
     try {
       setLoading(true);
 
-      // Upload image file
       const imgUrl = await uploadFile('image');
 
-      // Upload video file
       const videoUrl = await uploadFile('video');
 
-      // Send backend api request
       await axios.post(`/api/videos/upload`, { imgUrl, videoUrl });
 
-      // Reset states 
       setImg(null);
       setVideo(null);
 

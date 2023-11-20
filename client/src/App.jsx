@@ -47,6 +47,7 @@ function App() {
       <Route path='/courseForm' element={<CourseForm/>}/>
       <Route path='/singleCourse' element={<SingleCourse/>}/>
       <Route path='/new' element={<NewTest/>}/>
+      <Route path='/courseForm' element={<CourseForm/>}/>
       <Route path='/createCourse/:courseId' element={<CourseForm/>}/>
     </Routes>
 
