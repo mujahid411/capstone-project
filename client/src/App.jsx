@@ -21,6 +21,7 @@ import DisplayCourse from './components/DisplayCourse';
 import CourseForm from './components/CourseForm';
 import SingleCourse from './components/SingleCourse';
 import NewTest from './components/NewTest';
+import AddChapter from './components/AddChapter';
 import('preline')
 function App() {
   return (
@@ -48,7 +49,8 @@ function App() {
       <Route path='/singleCourse' element={<SingleCourse/>}/>
       <Route path='/new' element={<NewTest/>}/>
       <Route path='/courseForm' element={<CourseForm/>}/>
-      <Route path='/createCourse/:courseId' element={<CourseForm/>}/>
+      <Route path='/courseForm/:courseId' element={<CourseForm/>}/>
+      <Route path='/addChapter/:courseId' element={<AddChapter/>}/>
     </Routes>
 
   )

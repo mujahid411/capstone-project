@@ -22,6 +22,7 @@ const Upload = () => {
       let cloudName = 'drgqcwxq6';
       let resourceType = type === 'image' ? 'image' : 'video';
       let api = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`;
+      console.log('data', data)
 
       const res = await axios.post(api, data);
       const { secure_url } = res.data;
