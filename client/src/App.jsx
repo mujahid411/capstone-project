@@ -22,6 +22,7 @@ import CourseForm from './components/CourseForm';
 import SingleCourse from './components/SingleCourse';
 import NewTest from './components/NewTest';
 import AddChapter from './components/AddChapter';
+import SlideInNotifications from './components/Notification';
 import('preline')
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
       <Route path='/courseForm' element={<CourseForm/>}/>
       <Route path='/courseForm/:courseId' element={<CourseForm/>}/>
       <Route path='/addChapter/:courseId' element={<AddChapter/>}/>
+      <Route path='/notification' element={<SlideInNotifications/>}/>
     </Routes>
 
   )

@@ -62,6 +62,7 @@ const Upload = () => {
 
   return (
     <div className='container'>
+                             
       <form onSubmit={handleSubmit} className='form-container'>
         <center>
           <div style={{ border: '4px solid black', width: '510px', height: '400px' }}>
