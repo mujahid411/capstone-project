@@ -23,6 +23,7 @@ import SingleCourse from './components/SingleCourse';
 import NewTest from './components/NewTest';
 import AddChapter from './components/AddChapter';
 import SlideInNotifications from './components/Notification';
+import GoogleAuth from './components/GoogleAuth';
 import('preline')
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
       <Route path='/courseForm/:courseId' element={<CourseForm/>}/>
       <Route path='/addChapter/:courseId' element={<AddChapter/>}/>
       <Route path='/notification' element={<SlideInNotifications/>}/>
+      <Route path='/google' element={<GoogleAuth/>}/>
     </Routes>
 
   )

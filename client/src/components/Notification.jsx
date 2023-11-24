@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiCheckSquare, FiX } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 
-const SlideInNotifications = ({displayText}) => {
+const SlideInNotifications = ({displayText,buttonText}) => {
   const [notifications, setNotifications] = useState([]);
 
   const removeNotif = (id) => {

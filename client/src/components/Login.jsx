@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import GoogleAuth from './GoogleAuth';
 
 const Login= () => {
     const navigate = useNavigate();
@@ -102,9 +103,12 @@ const Login= () => {
                         </div>
                     </form>
 
+                    <div className="divider divider-error text-sm">OR</div>
+                    <GoogleAuth/>
 
                 </div>
             </div>
+
         </div>
 
     )
