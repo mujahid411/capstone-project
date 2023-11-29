@@ -24,6 +24,8 @@ import NewTest from './components/NewTest';
 import AddChapter from './components/AddChapter';
 import SlideInNotifications from './components/Notification';
 import GoogleAuth from './components/GoogleAuth';
+import CourseOverview from './components/CourseOverview';
+import ErrorNotFound from './components/ErrorNotFound';
 import('preline')
 function App() {
   return (
@@ -55,6 +57,8 @@ function App() {
       <Route path='/addChapter/:courseId' element={<AddChapter/>}/>
       <Route path='/notification' element={<SlideInNotifications/>}/>
       <Route path='/google' element={<GoogleAuth/>}/>
+      <Route path='/courseOverview/:courseId' element={<CourseOverview/>}/>
+      <Route path='*' element={<ErrorNotFound/>}/>
     </Routes>
 
   )
