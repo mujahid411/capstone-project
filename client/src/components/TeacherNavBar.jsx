@@ -126,7 +126,7 @@ function NavListMenu() {
                 <MenuHandler>
                     <Typography as="div" variant="small" className="font-medium">
                         <ListItem
-                            className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+                            className="flex items-center gap-2 py-1pr-4 font-medium text-gray-900"
                             selected={isMenuOpen || isMobileMenuOpen}
                             onClick={() => setIsMobileMenuOpen((cur) => !cur)}
                         >
@@ -157,7 +157,7 @@ function NavListMenu() {
     );
 }
 
-function NavList() {
+function NavList({profile,mycourses,createCourse,home}) {
     return (
         <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
             <Typography
@@ -167,9 +167,11 @@ function NavList() {
                 color="blue-gray"
                 className="font-medium"
             >
-                <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem' }}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                
+                <ListItem className="flex items-center gap-2 py-1pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem',backgroundColor:home?'#eeeeee':'' }}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
+                
                     Home</ListItem>
             </Typography>
             <Typography
@@ -179,7 +181,7 @@ function NavList() {
                 color="blue-gray"
                 className="font-medium"
             >
-                <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem' }}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <ListItem className="flex items-center gap-2 py-1pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem',backgroundColor:mycourses?'#eeeeee':'' }}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                 </svg>
 
@@ -193,7 +195,7 @@ function NavList() {
                 color="blue-gray"
                 className="font-medium"
             >
-                <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem' }}>
+                <ListItem className="flex items-center gap-2 py-1pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem',backgroundColor:profile?'#eeeeee':'' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -207,7 +209,7 @@ function NavList() {
                 color="blue-gray"
                 className="font-medium"
             >
-                <ListItem className="flex items-center gap-2 py-2 pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem' }}>
+                <ListItem className="flex items-center gap-2 py-1pr-4 text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" style={{ fontSize: '1.2rem',backgroundColor:createCourse?'#eeeeee':'' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -218,9 +220,10 @@ function NavList() {
     );
 }
 
-function TeacherNavBar() {
+function TeacherNavBar({profile,mycourses,createCourse,home}) {
     const [openNav, setOpenNav] = React.useState(false);
     const navigate = useNavigate()
+    console.log(profile,mycourses,createCourse,home)
     let handleClick = () => {
         localStorage.removeItem('token');
         navigate('/')
@@ -234,7 +237,7 @@ function TeacherNavBar() {
     }, []);
 
     return (
-        <Navbar className="mx-auto max-w-screen-x2 px-4 py-2">
+        <Navbar className="mx-auto max-w-screen-x2 px-4 py-1">
             <div className="flex items-center justify-between text-blue-gray-900">
                 <Typography
                     as="a"
@@ -248,7 +251,7 @@ function TeacherNavBar() {
                     </a>
                 </Typography>
                 <div className="hidden lg:block">
-                    <NavList />
+                    <NavList profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
                 </div>
 
                 <div className="hidden gap-2 lg:flex">

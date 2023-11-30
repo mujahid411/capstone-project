@@ -18,7 +18,8 @@ router.post('/loginUser',async(req,res)=>{
        if(findTeacher){
         let payload={
             email:req.body.email,
-            role:findTeacher.role
+            role:findTeacher.role,
+            userDetails:findTeacher
         }
         let privatekey='codeforindia';
         let role = findTeacher.role
@@ -28,7 +29,8 @@ router.post('/loginUser',async(req,res)=>{
        if(findStudent){
         let payload={
             email:req.body.email,
-            role:findStudent.role
+            role:findStudent.role,
+            userDetails:findStudent
         }
         let privatekey='codeforindia';
         let role = findStudent.role

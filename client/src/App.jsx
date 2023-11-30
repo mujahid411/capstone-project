@@ -26,6 +26,7 @@ import SlideInNotifications from './components/Notification';
 import GoogleAuth from './components/GoogleAuth';
 import CourseOverview from './components/CourseOverview';
 import ErrorNotFound from './components/ErrorNotFound';
+import ContactUs from './components/ContactUs';
 import('preline')
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
       <Route path='/google' element={<GoogleAuth/>}/>
       <Route path='/courseOverview/:courseId' element={<CourseOverview/>}/>
       <Route path='*' element={<ErrorNotFound/>}/>
+      <Route path='/contact' element={<ContactUs/>}/>
     </Routes>
 
   )

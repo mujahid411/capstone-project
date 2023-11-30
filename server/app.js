@@ -6,6 +6,7 @@ import studentRoutes from "./controllers/student/index.js"
 import loginRoutes from './controllers/login/index.js'
 import courseRoutes from './controllers/course/index.js'
 import chapterRoutes from './controllers/chapter/index.js'
+import authRoutes from './controllers/auth/index.js'
 import './dbConnect.js'
 
 
@@ -25,6 +26,7 @@ app.use("/api/student", studentRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/chapters", chapterRoutes);
+app.use("/api/auth", authRoutes);
 
 
 

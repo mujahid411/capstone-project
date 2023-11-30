@@ -6,14 +6,15 @@ const router = express.Router();
 router.post('/addChapter',async (req,res)=>{
     try {
         console.log('in serrver')
-        let {chapterTitle, chapterVideo} = req.body;
+        let {chapterTitle, chapterVideo,chapterDuration} = req.body;
         let courseId = req.query.id;
         let find =await CourseModel.findById({_id:courseId});
         console.log(find);
 
         let chapterData = {
             chapterTitle,
-            chapterVideo
+            chapterVideo,
+            chapterDuration
         }
         if(find){
             find.courseChapters.push(chapterData);
