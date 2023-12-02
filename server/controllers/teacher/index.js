@@ -76,7 +76,7 @@ router.post('/teacherUpdate',async (req,res)=>{
    let updatedDetails = await TeacherModel.updateOne({_id:id},
       {$set:updateData})
     //   res.send(updateData); 
-    //   console.log(updatedDetails)
+      console.log(updatedDetails)
       let payload={
         userDetails:updateData
     }

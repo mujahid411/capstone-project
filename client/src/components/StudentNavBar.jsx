@@ -190,7 +190,7 @@ function NavList() {
             {/* <NavListMenu /> */}
             <Typography
                 as="a"
-                href="#"
+                href="/studentProfile"
                 variant="small"
                 color="blue-gray"
                 className="font-medium"

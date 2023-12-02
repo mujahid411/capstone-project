@@ -27,6 +27,7 @@ import GoogleAuth from './components/GoogleAuth';
 import CourseOverview from './components/CourseOverview';
 import ErrorNotFound from './components/ErrorNotFound';
 import ContactUs from './components/ContactUs';
+import StudentProfile from './components/StudentProfile';
 import('preline')
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
       <Route path='/courseOverview/:courseId' element={<CourseOverview/>}/>
       <Route path='*' element={<ErrorNotFound/>}/>
       <Route path='/contact' element={<ContactUs/>}/>
+      <Route path='/studentProfile' element={<StudentProfile/>}/>
     </Routes>
 
   )

@@ -3,48 +3,64 @@ import { FiAlertCircle } from "react-icons/fi";
 import { useState } from "react";
 import axios from "axios";
 
-const SideBar = ({teacher,setTeacher}) => {
+const SideBar = ({teacher,setTeacher,student,setStudent}) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(teacher,'sidebar')
+  console.log(student,'sidebar')
   
   return (
-    <div className="px-0 py-0 bg-white-900 grid place-content-center">
+    <div className="px-0 py-0 bg-white-900 grid place-content-center mt-4">
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity"
+        className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity mt-4"
       >
         Update Profile
       </button>
-      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen}  teacher={teacher} setTeacher={setTeacher}/>
+      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen}  teacher={teacher} setTeacher={setTeacher} student={student} setStudent={setStudent}/>
     </div>
   );
 };
 
-const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher }) => {
+const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }) => {
   const handleClick =async ()=>{
-    try {
-      setIsOpen(false);
-      let id = teacher._id
-      // let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
-      //   params:{
-      //     id:id
-      //   }
-      // })
-      // console.log(response.data,'upated')
-      // let updatedData = response.data
-      // setTeacher(updatedData)
-      let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
-        headers:{
-            id:id
-        }
-       })
-      //  let email = response.data.email;
-      // let token = response.data.token;
-      // console.log(response.data);
-      localStorage.setItem('token',response.data.token)
-    } catch (error) {
-      console.error(error)
+    console.log('in handle click',teacher,student)
+    if(teacher){
+      try {
+        console.log('in teacher click')
+
+        setIsOpen(false);
+        let id = teacher._id
+        
+        let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
+          params:{
+              id:id
+          }
+         })
+       
+        localStorage.setItem('token',response.data.token)
+      } catch (error) {
+        console.error(error)
+      }
     }
+    if(student){
+      console.log('in student click')
+
+      try {
+        setIsOpen(false);
+        let id = student._id
+        
+        let response = await axios.post('/api/student/studentUpdate',{...student},{
+          params:{
+              id:id
+          }
+         })
+       
+        localStorage.setItem('token',response.data.token)
+      } catch (error) {
+        console.error(error)
+      }
+
+    }
+   
   }
   return (
     <AnimatePresence>

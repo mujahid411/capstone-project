@@ -1,6 +1,8 @@
 import express from 'express'
 import StudentModel from '../../models/StudentModel.js';
+import jwt from 'jsonwebtoken';
 const router = express.Router()
+
 // import { addCourseValidation, studentRegisteration, userLoginValidations } from '../../middleware/validators/index.js';
 
 router.post('/studentRegister',async(req,res)=>{
@@ -64,6 +66,38 @@ router.post('/studentLogin',async(req,res)=>{
         console.error(error)
     }
 })
+
+router.post('/studentUpdate',async (req,res)=>{
+    try {
+     let id = req.query.id;
+     let find = await StudentModel.findById(id);
+     console.log(req.body,'req.body')
+     let updateData = req.body
+     console.log(updateData,'updateData');
+    let updatedDetails = await StudentModel.updateOne({_id:id},
+       {$set:updateData})
+     //   res.send(updateData); 
+       console.log(updatedDetails)
+       let payload={
+         userDetails:updateData
+     }
+     // console.log('payload',payload)
+     let privatekey='codeforindia';
+     
+     let token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
+     console.log(token)
+     res.status(200).json({ success: 'student data updated successfully', token});
+ 
+    } catch (error) {
+     console.error(error);
+     res.status(500).json({error:'Internal server error'})
+ 
+    }
+ 
+ })
+
+
+
 router.post('/addCourse',async(req,res)=>{
     try {
         console.log('from add course')

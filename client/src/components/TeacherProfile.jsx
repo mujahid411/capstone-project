@@ -56,7 +56,7 @@ const TeacherProfile = () => {
         }
       }
          authTeacher();
-        findTeacher();
+        // findTeacher();
     },[])
 
     let handleChange = (e) => {
@@ -84,16 +84,16 @@ const TeacherProfile = () => {
   return (
     <>
     <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
-      <div className="flex  flex-1 flex-col justify-center px-6 py-0 lg:px-8 mt-10" id='animation-container'>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 " id='animation-container'>
   
 
-        <div className="mt-0 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-1 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-1" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900 m-0" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                 Name
               </label>
-              <div className="mt-0">
+              <div className="mt-1">
                 <input
                   id="name"
                   name="name"
@@ -110,7 +110,7 @@ const TeacherProfile = () => {
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                 Email
               </label>
-              <div className="mt-0">
+              <div className="mt-1">
                 <input
                   id="email"
                   name="email"
@@ -127,7 +127,7 @@ const TeacherProfile = () => {
               <label htmlFor="address" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                 Address
               </label>
-              <div className="mt-0">
+              <div className="mt-1">
                 <input
                   id="address"
                   name="address"
@@ -144,7 +144,7 @@ const TeacherProfile = () => {
               <label htmlFor="mobileNumber" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                 Mobile Number
               </label>
-              <div className="mt-0">
+              <div className="mt-1">
                 <input
                   id="mobileNumber"
                   name="mobileNumber"
@@ -161,7 +161,7 @@ const TeacherProfile = () => {
               <label htmlFor="password" id="password" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                 Password
               </label>
-              <div className="mt-0">
+              <div className="mt-1">
                 <div className="max-w-sm">
                   <div className="flex">
                     <div className="relative flex-1">
@@ -242,7 +242,7 @@ const TeacherProfile = () => {
               <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                 Description
               </label>
-              <div className="mt-0">
+              <div className="mt-1">
                 <textarea
                   id="description"
                   name="description"
@@ -255,7 +255,7 @@ const TeacherProfile = () => {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mt-4"
@@ -263,8 +263,8 @@ const TeacherProfile = () => {
               >
                 Update Profile
               </button>
-            </div>
-            <SideBar teacher={teacher} setTeacher={setTeacher}/>
+            </div> */}
+            <SideBar teacher={teacher} setTeacher={setTeacher} />
           </form>
 
 
