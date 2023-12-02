@@ -1,9 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import { useState } from "react";
+import axios from "axios";
 
-const SideBar = () => {
+const SideBar = ({teacher,setTeacher}) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(teacher,'sidebar')
   
   return (
     <div className="px-0 py-0 bg-white-900 grid place-content-center">
@@ -13,12 +15,37 @@ const SideBar = () => {
       >
         Update Profile
       </button>
-      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen}  teacher={teacher} setTeacher={setTeacher}/>
     </div>
   );
 };
 
-const SpringModal = ({ isOpen, setIsOpen }) => {
+const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher }) => {
+  const handleClick =async ()=>{
+    try {
+      setIsOpen(false);
+      let id = teacher._id
+      // let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
+      //   params:{
+      //     id:id
+      //   }
+      // })
+      // console.log(response.data,'upated')
+      // let updatedData = response.data
+      // setTeacher(updatedData)
+      let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
+        headers:{
+            id:id
+        }
+       })
+      //  let email = response.data.email;
+      // let token = response.data.token;
+      // console.log(response.data);
+      localStorage.setItem('token',response.data.token)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <AnimatePresence>
       {isOpen && (
@@ -57,7 +84,7 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
                   Nah, go back
                 </button>
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClick}
                   className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
                 >
                   YES!

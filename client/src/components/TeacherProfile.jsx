@@ -10,25 +10,53 @@ const TeacherProfile = () => {
     const [home,setHome] = useState(false);
     const [createCourse,setCreateCourse] = useState(false);
     const [mycourses,setCourses] = useState(false);
-    async function authTeacher(){
+    const [teacherId,setTeacherId] = useState('');
+   
+    async function findTeacher(){
       try {
-        let response = await axios.get('/api/auth/verify',{
+        let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
             headers:{
-                token:token
+                id:teacherId
             }
            })
           //  let email = response.data.email;
-          let details = response.data.userDetails;
-          console.log(details);
-          setTeacher(details);
-           console.log(teacher,'teacher');
+          // let token = response.data.token;
+          console.log(response.data);
+          localStorage.setItem('token',response.data.token)
+          // let details = response.data;
+          // console.log(details);
+          // setTeacher(details);
+          //  console.log(teacher,'teacher');
       } catch (error) {
         console.error(error)
       }
     }
 
-    useEffect(()=>{
-        authTeacher()
+    useEffect( ()=>{
+      async function authTeacher(){
+        try {
+          let token = localStorage.getItem('token')
+
+          let response = await axios.get('/api/auth/verify',{
+              headers:{
+                  token:token
+              }
+             })
+            //  let email = response.data.email;
+  
+            let details = response.data.userDetails;
+            setTeacher(details)
+            console.log(teacher,'teachersdnsdlknsdkncdgkdngsldknsdk');
+            let userId = details._id;
+            console.log(userId)
+            setTeacherId(userId);
+            console.log(teacherId)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+         authTeacher();
+        findTeacher();
     },[])
 
     let handleChange = (e) => {
@@ -39,30 +67,13 @@ const TeacherProfile = () => {
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let response = await axios.post(`/api/teacher/teacherRegister`, {
+        let response = await axios.post(`/api/teacher/teacherUpdate`, {
           ...teacher
         });
   
   
-        // navigate('/login');
         console.log(response.data)
-        // if (response.data) {
-        //   setSuccessAlert(true)
-        //   setTimeout(() => {
-        //     setSuccessAlert(false)
-        //   }, 4000);
-        // }
-        // console.log(teacher);
-        // setTeacher({
-        //   name: '',
-        //   lastName: '',
-        //   email: "",
-        //   mobileNumber: '',
-        //   address: '',
-        //   password: '',
-        //   password2: '',
-        //   description:''
-        // })
+      
       } catch (error) {
         console.log('this is a error')
         console.error(error)
@@ -253,7 +264,7 @@ const TeacherProfile = () => {
                 Update Profile
               </button>
             </div>
-            <SideBar/>
+            <SideBar teacher={teacher} setTeacher={setTeacher}/>
           </form>
 
 
