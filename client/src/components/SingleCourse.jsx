@@ -101,11 +101,11 @@ const SingleCourse = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-12 p-6 pt-8 px-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-12 p-6 pt-8 px-10 sm:px-15 ">
         {courses.map((course, index) => (
           <a href={`/courseOverview/${course._id}`} key={index}>
-            <div className="flex flex-col group bg-white border shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-              <div className="relative pt-[50%] sm:pt-[60%] lg:pt-[65%] rounded-t-xl overflow-hidden">
+            <div className="flex flex-col group bg-white border shadow-sm rounded-xl overflow-hidden hover:shadow-lg transition dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]" style={{border:'0px',height:'19rem'}}>
+              <div className="relative pt-[50%] sm:pt-[60%] lg:pt-[65%] rounded-lg overflow-hidden">
                 <img
                   className="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-t-xl"
                   src={course.courseImage}
