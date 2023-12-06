@@ -12,25 +12,7 @@ const TeacherProfile = () => {
     const [mycourses,setCourses] = useState(false);
     const [teacherId,setTeacherId] = useState('');
    
-    async function findTeacher(){
-      try {
-        let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
-            headers:{
-                id:teacherId
-            }
-           })
-          //  let email = response.data.email;
-          // let token = response.data.token;
-          console.log(response.data);
-          localStorage.setItem('token',response.data.token)
-          // let details = response.data;
-          // console.log(details);
-          // setTeacher(details);
-          //  console.log(teacher,'teacher');
-      } catch (error) {
-        console.error(error)
-      }
-    }
+
 
     useEffect( ()=>{
       async function authTeacher(){
@@ -46,7 +28,6 @@ const TeacherProfile = () => {
   
             let details = response.data.userDetails;
             setTeacher(details)
-            console.log(teacher,'teachersdnsdlknsdkncdgkdngsldknsdk');
             let userId = details._id;
             console.log(userId)
             setTeacherId(userId);

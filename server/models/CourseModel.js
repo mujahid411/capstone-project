@@ -19,6 +19,12 @@ let courseSchema = new mongoose.Schema({
     courseCategory: {
         type: String
     },
+    teacherId:{
+        type:String
+    },
+    teacherName:{
+        type:String
+    },
     courseQuiz: []
 }, { timestamps: true })
 

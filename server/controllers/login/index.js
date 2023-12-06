@@ -13,7 +13,7 @@ router.post('/loginUser',async(req,res)=>{
         let findTeacher = await TeacherModel.findOne({email});
         let findStudent = await StudentModel.findOne({email});
         if(!findTeacher && !findStudent){
-            return res.status(404).json({error:'Email not found,please registesr'})
+            return res.status(404).json({error:'Email not found,please register'})
         }
        if(findTeacher){
         let payload={

@@ -2,6 +2,7 @@ import express from 'express'
 const router = express.Router()
 import TeacherModel from '../../models/TeacherModel.js';
 import  jwt  from 'jsonwebtoken';
+import CourseModel from '../../models/CourseModel.js';
 // import { addCourseValidation, teacherRegisteration, userLoginValidations } from '../../middleware/validators/index.js';
 
 router.post('/teacherRegister',async(req,res)=>{
@@ -99,6 +100,22 @@ router.get('/findTeacher',async (req,res)=>{
     try {
      let id = req.query.id;
      let find = await TeacherModel.findById(id);
+      if(find){
+        res.send(find);
+      }
+    } catch (error) {
+     console.error(error);
+     res.status(500).json({error:'Internal server error'})
+ 
+    }
+ 
+ })
+
+ router.get('/mycourses',async (req,res)=>{
+    try {
+     let id = req.query.id;
+     console.log(id,'id')
+     let find = await CourseModel.find({teacherId:id});
       if(find){
         res.send(find);
       }

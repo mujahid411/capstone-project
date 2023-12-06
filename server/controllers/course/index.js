@@ -5,13 +5,16 @@ const router = express.Router();
 
 router.post('/createCourse',async (req,res)=>{
    try {
-    let {courseTitle,courseDescription,coursePrice,courseImage,courseCategory} = req.body
+    let {courseTitle,courseDescription,coursePrice,courseImage,courseCategory,teacherId,teacherName} = req.body
+    console.log(req.body)
     let courseData = {
         courseTitle,
         courseDescription,
         coursePrice,
         courseImage,
-        courseCategory
+        courseCategory,
+        teacherId,
+        teacherName
     }
     let courseDetails = new CourseModel(courseData);
     let response = await courseDetails.save()

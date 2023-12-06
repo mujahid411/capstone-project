@@ -28,6 +28,7 @@ import CourseOverview from './components/CourseOverview';
 import ErrorNotFound from './components/ErrorNotFound';
 import ContactUs from './components/ContactUs';
 import StudentProfile from './components/StudentProfile';
+import MyCourses from './components/MyCourses';
 import('preline')
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
       <Route path='*' element={<ErrorNotFound/>}/>
       <Route path='/contact' element={<ContactUs/>}/>
       <Route path='/studentProfile' element={<StudentProfile/>}/>
+      <Route path='/mycourses' element={<MyCourses/>}/>
     </Routes>
 
   )

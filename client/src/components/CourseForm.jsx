@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import TeacherNavBar from './TeacherNavBar';
+import { useGlobalContext } from '../Context';
 
 const CourseForm = () => {
-  let { courseId } = useParams();
+  const {user} = useGlobalContext()
+  const teacherId = user._id;
+  const teacherName = user.name;
+  const { courseId } = useParams();
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [img, setImg] = useState('');
@@ -24,6 +28,7 @@ const CourseForm = () => {
     courseCategory: '',
     courseChapters: [],
     courseQuiz: [],
+    teacherId
   });
 
   let handleChange = (e) => {
@@ -87,7 +92,7 @@ const CourseForm = () => {
     if (courseData.courseChapters.length < 1) {
       return;
     }
-    let response = await axios.post('/api/courses/updateCourse', { ...courseData }, {
+    let response = await axios.post('/api/courses/updateCourse', { ...courseData,teacherId,teacherName }, {
       params: {
         id: courseId
       }
@@ -164,7 +169,7 @@ const CourseForm = () => {
       if (!courseData.courseCategory || !courseData.courseTitle || !courseData.coursePrice || !courseData.courseDescription || !courseData.courseImage) {
         return;
       }
-      let response = await axios.post('/api/courses/createCourse', { ...courseData });
+      let response = await axios.post('/api/courses/createCourse', { ...courseData,teacherId,teacherName });
       let courseId = response.data.id;
       navigate(`/addChapter/${courseId}`)
 
