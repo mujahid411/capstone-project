@@ -36,6 +36,11 @@ const MyCourses = () => {
         }
         myCourses()
     },[id])
+    if(allCourses.length>10 || allCourses.length===0){
+      return <div>
+        <h2>Loading...</h2>
+      </div>
+    }
   return (
     <div>
         <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
