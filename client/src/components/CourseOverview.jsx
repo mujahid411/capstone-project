@@ -78,22 +78,28 @@ const CourseOverview = () => {
       
       {/* <ShuffleGrid /> */}
     {/* </section>  */}
-    <section className="py-10" >
-            <div className="w-full max-w-screen-xl mx-auto px-2 text-gray-600  items-start justify-between lg:flex md:px-0 ">
-                <div className="w-full sm:hidden lg:block lg:max-w-2xl">
+    <section className="py-10 "  style={{backgroundColor:'#F5F5F5 ',color:'black '}} >
+            <div className="w-full max-w-screen-xl mx-auto px-0 text-gray-600  items-start justify-between lg:flex md:px-0 ">
+                <div className="w-full sm:hidden lg:block lg:max-w-2xl ">
                     <img src={courseData.courseImage} className="rounded-lg w-full" alt="" />
                 </div>
-                <div className="mt-6 gap-12 sm:mt-0 md:flex lg:block" >
+                <div className="mt-6 gap-12 sm:mt-0 md:flex lg:block "  >
                     <div className="max-w-2xl" style={{textAlign:'initial'}}>
                         <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
                            {courseData.courseTitle}
                         </h3>
                         <p className="mt-3 max-w-xl">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis sollicitudin quam ut tincidunt.
+                           Description: {courseData.courseDescription} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis sollicitudin quam ut tincidunt.
+                        </p>
+                        <p className="mt-3 max-w-xl">
+                         Category: {courseData.courseCategory}
+                        </p>
+                        <p className="mt-3 max-w-xl">
+                         Author: {courseData.teacherName || 'traversy media'}
                         </p>
                     </div>
                     <div className="flex-none mt-6 md:mt-0 lg:mt-6">
-                        <ul className="inline-grid gap-y-8 gap-x-14 grid-cols-2">
+                        {/* <ul className="inline-grid gap-y-8 gap-x-14 grid-cols-2">
                             {
                                 stats.map((item, idx) => (
                                     <li key={idx} className="">
@@ -102,7 +108,7 @@ const CourseOverview = () => {
                                     </li>
                                 ))
                             }
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>
