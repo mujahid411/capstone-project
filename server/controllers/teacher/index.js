@@ -114,7 +114,7 @@ router.get('/findTeacher',async (req,res)=>{
  router.get('/mycourses',async (req,res)=>{
     try {
      let id = req.query.id;
-     console.log(id,'id')
+    //  console.log(id,'id')
      let find = await CourseModel.find({teacherId:id});
       if(find){
         res.send(find);
