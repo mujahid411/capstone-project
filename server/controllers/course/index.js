@@ -43,19 +43,19 @@ router.get('/getCourse', async (req,res)=>{
 
 })
 
-router.put('/getCourse', async (req,res)=>{
-    try {
-     let {courseIdValue} = req.query;
-     let find = await CourseModel.findOne({_id:courseIdValue});
-     console.log(find);
-     res.send(find);
-    } catch (error) {
-     console.error(error);
-     return res.status(500).json({ error: 'Internal Server Error' });
-     
-    }
- 
- })
+router.get('/fetchCourse', async (req,res)=>{
+   try {
+    let id = req.query.id;
+    let find = await CourseModel.findOne({_id:id});
+    console.log(find);
+    res.send(find);
+   } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+    
+   }
+
+})
 
  router.get('/getAllCourses', async (req,res)=>{
    try {
