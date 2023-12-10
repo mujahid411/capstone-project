@@ -22,10 +22,8 @@ const SideBar = ({teacher,setTeacher,student,setStudent}) => {
 
 const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }) => {
   const handleClick =async ()=>{
-    console.log('in handle click',teacher,student)
     if(teacher){
       try {
-        console.log('in teacher click')
 
         setIsOpen(false);
         let id = teacher._id
@@ -97,7 +95,7 @@ const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }
                   onClick={() => setIsOpen(false)}
                   className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded"
                 >
-                  Nah, go back
+                  No, go back
                 </button>
                 <button
                   onClick={handleClick}

@@ -66,7 +66,7 @@ function App() {
       <Route path='*' element={<ErrorNotFound/>}/>
       <Route path='/contact' element={<ContactUs/>}/>
       <Route path='/studentProfile' element={<StudentProfile/>}/>
-      <Route path='/mycourses' element={<MyCourses/>}/>
+      <Route path='/mycourses/:id' element={<MyCourses/>}/>
       <Route path='/check' element={<Check/>}/>
       <Route path='/search/:courseName' element={<SearchCourse/>}/>
     </Routes>

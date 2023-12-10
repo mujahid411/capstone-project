@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../Context'
 import SingleCourse from './SingleCourse'
 import TeacherNavBar from './TeacherNavBar'
+import { useParams } from 'react-router-dom'
 
 const MyCourses = () => {
     const {user} = useGlobalContext()
+    let {id} = useParams()
     let [allCourses,setAllCourses]= useState([])
     const [profile,setProfile] = useState(false);
     const [home,setHome] = useState(false);
@@ -15,7 +17,7 @@ const MyCourses = () => {
     //     let id = await user._id
     //     console.log(id,'userid')
     // }
-    let id = user._id
+    // let id = user._id
     // console.log(user._id)
 
 
@@ -36,11 +38,11 @@ const MyCourses = () => {
         }
         myCourses()
     },[id])
-    if(allCourses.length>10 || allCourses.length===0){
+    if( allCourses.length===0){
       return <div>
         <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
  <h1 style={{textAlign:'initial',paddingLeft:'2rem',paddingTop:'1rem'}}>Your Courses</h1>
-        <h2>Loading...</h2>
+        <h1>Loading...</h1>
       </div>
     }
   return (

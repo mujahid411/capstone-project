@@ -19,6 +19,7 @@ const TeacherMain = () => {
           token: token
         }
       })
+      console.log(response.data,'teahchermain')
       //  let email = response.data.email;
       //  console.log(email)
       console.log(response.data)
