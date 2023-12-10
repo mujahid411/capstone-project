@@ -16,7 +16,7 @@ const MyCourses = () => {
     //     console.log(id,'userid')
     // }
     let id = user._id
-    console.log(user._id)
+    // console.log(user._id)
 
 
     useEffect(()=>{
@@ -38,6 +38,8 @@ const MyCourses = () => {
     },[id])
     if(allCourses.length>10 || allCourses.length===0){
       return <div>
+        <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
+ <h1 style={{textAlign:'initial',paddingLeft:'2rem',paddingTop:'1rem'}}>Your Courses</h1>
         <h2>Loading...</h2>
       </div>
     }

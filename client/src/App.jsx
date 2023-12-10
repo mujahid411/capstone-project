@@ -29,6 +29,8 @@ import ErrorNotFound from './components/ErrorNotFound';
 import ContactUs from './components/ContactUs';
 import StudentProfile from './components/StudentProfile';
 import MyCourses from './components/MyCourses';
+import Check from './components/Check';
+import SearchCourse from './components/SearchCourse';
 import('preline')
 function App() {
   return (
@@ -65,6 +67,8 @@ function App() {
       <Route path='/contact' element={<ContactUs/>}/>
       <Route path='/studentProfile' element={<StudentProfile/>}/>
       <Route path='/mycourses' element={<MyCourses/>}/>
+      <Route path='/check' element={<Check/>}/>
+      <Route path='/search/:courseName' element={<SearchCourse/>}/>
     </Routes>
 
   )

@@ -129,7 +129,13 @@ const Upload = () => {
           </center>
         }
       </form>
+      <UploadComponent/>
     </div>
   )
 }
 export default Upload;
+
+
+// import { useState } from "react";
+
+
