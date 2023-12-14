@@ -129,7 +129,7 @@ const Upload = () => {
           </center>
         }
       </form>
-      <UploadComponent/>
+      
     </div>
   )
 }

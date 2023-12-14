@@ -160,8 +160,9 @@ function NavListMenu() {
 
 function NavList({profile,mycourses,createCourse,home}) {
 
-    const {user} = useGlobalContext()
+    const {user,userId} = useGlobalContext()
     let id = user._id;
+    // const id = userId;
     return (
         <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
             <Typography

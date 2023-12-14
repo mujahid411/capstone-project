@@ -4,9 +4,14 @@ import TeacherNavBar from "./TeacherNavBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Check from "./Check";
+import { useGlobalContext } from "../Context";
+import StudentNavBar from "./StudentNavBar";
 
 const CourseOverview = () => {
   let {courseId} =useParams();
+  let {user} = useGlobalContext()
+  let role = user.role;
+  let id = user._id
   let [courseData,setCourseData] = useState({});
   const stats = [
     {
@@ -42,11 +47,27 @@ const CourseOverview = () => {
      }
      fetchCourse()
   },[])
+
+  const addToCart = async()=>{
+    try {
+       let response = await axios.post('/api/student/addToCart',{courseData},{
+        params:{
+           id:id
+        }
+       })
+       console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <>
-      <TeacherNavBar/>
+
+     {role=='student'?<StudentNavBar/>:<TeacherNavBar/>}
+      
      
       
+       {/* <section className="w-full px-2 py-0 grid grid-cols-1 md:grid-cols-2  gap-4 max-w-8xl mx-auto pb-8 bg-gray-800 " style={{color:'white',textAlign:'initial'}}> */}
        <section className="w-full px-2 py-0 grid grid-cols-1 md:grid-cols-2  gap-4 max-w-8xl mx-auto pb-8 " style={{backgroundColor:'#F5F5F5',color:'black',textAlign:'initial'}}>
 
       <div className="pt-9 px-2 md:px-10  " >
@@ -54,7 +75,7 @@ const CourseOverview = () => {
                 </div>
       <div className=" p-1 sm:mt-10 text-gray-600 text-base " style={{color:''}}>
      
-        <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+        <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl" style={{color:''}}>
                            {courseData.courseTitle}
                         </h3>
         <p className="text-base   my-4  max-w-2xl " style={{textAlign:'initial'}}>
@@ -77,6 +98,12 @@ const CourseOverview = () => {
         <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95" >
           Buy Now for ₹{courseData.coursePrice}.00
         </button>
+        {role=='student'?<button
+        onClick={addToCart}
+         className="block mt-3 bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95" >
+          Add to Cart
+        </button>:''}
+
       </div>
       
     </section>  

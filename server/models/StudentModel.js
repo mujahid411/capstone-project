@@ -16,9 +16,8 @@ let studentSchema = new mongoose.Schema({
     password:{
         type:String,
     },
-    courses: [{
-        type: String
-    }],
+    courses: [],
+    cart:[],
     address: String,
     isVerified: {
         email: {

@@ -90,6 +90,9 @@ const AddChapter = () => {
                 }
 
             })
+            setChapterVideo(null);
+            setChatperTitle('');
+            setChapterDuration('')
             console.log(response);
 
         } catch (error) {

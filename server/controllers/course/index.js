@@ -1,5 +1,7 @@
 import express from 'express';
 import CourseModel from '../../models/CourseModel.js';
+import {OneAI} from 'oneai';
+
 const router = express.Router();
 
 
@@ -94,5 +96,34 @@ router.post('/updateCourse', async (req,res)=>{
 
 })
 
+router.get('/summary', async (req,res)=>{
+   try {
+
+      const content = req.headers.content;
+      const oneai = new OneAI('61d6a4bf-c11f-4b1d-ba68-04b45d1c0b49');
+      
+      const pipeline = new oneai.Pipeline(
+         oneai.skills.summarize(),
+         {
+            multilingual:{
+               enabled:true
+            }
+         }
+       
+      );
+      const output = await pipeline.run(content);
+      res.status(200).json({success:'video transcribed'});
+      
+      console.log(output);
+      // const pipeline = new oneai.Pipeline(
+      //    oneai.skills.transcribe({ speaker_detection: true, }) );
+      //    pipeline.runFile(content).then(console.log);
+   } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+    
+   }
+
+})
 
 export default router;

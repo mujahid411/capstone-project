@@ -1,5 +1,6 @@
 import express from 'express'
 import StudentModel from '../../models/StudentModel.js';
+import CourseModel from '../../models/CourseModel.js';
 import jwt from 'jsonwebtoken';
 const router = express.Router()
 
@@ -98,44 +99,30 @@ router.post('/studentUpdate',async (req,res)=>{
 
 
 
-router.post('/addCourse',async(req,res)=>{
-    try {
-        console.log('from add course')
-        let {courseName,description,courseImage,courseCategory,price,addChapter,token}=req.body
-        const decodedToken = jwt.verify(token, jwtkey);
-        console.log(decodedToken.userId)
-        const student_id=decodedToken.userId
-        let courseData = {
-            courseName,
-            description,
-            courseImage,
-            courseCategory,
-            price,
-            addChapter,
-            student_id
-        }
-        console.log({courseName,description,courseImage,courseCategory,price,addChapter,token})
-        // const token = req.headers.authorization.split(' ')[1];
 
-        // let deCodetoken = 
-        let findCourse = await CourseModel.findOne({courseName,description,courseImage,courseCategory,price,addChapter,student_id})
-        if(findCourse){
-            res.status(400).json({error:'course already exists'})
-        }else{ let courseDataDetails = new CourseModel(courseData);
-            await courseDataDetails.save()
-            res.status(200).json({success:'course added successfully!!'})}
+
+
+router.post('/addToCart',async(req,res)=>{
+    try {
+        const {courseData} = req.body;
+        console.log(courseData,'courseData');
+        let id = req.query.id;
+        // console.log(id)
+        let find = await StudentModel.findById(id);
+        if(!find){
+            res.status(400).json({error:'Student Not Found'})
+        }
+        console.log(find)
+        //  find.courses.push(courseData);
+         find.cart.push(courseData);
+        await find.save()
+        res.status(200).json({success:'Course Added to Cart'})
+
        
     } catch (error) {
-        console.error(error)
-       return res.status(500).json({error:'Internal server error'})
+        console.error(error);
+        res.status(500).json({error:'Internal server error'})
+        
     }
 })
-// router.post('/addChapter',async(req,res)=>{
-//     try {
-//         let {chapterName,chapterVideo}=req.body
-//         let 
-//     } catch (error) {
-        
-//     }
-// })
 export default router

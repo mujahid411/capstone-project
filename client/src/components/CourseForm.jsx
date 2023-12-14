@@ -191,9 +191,9 @@ const CourseForm = () => {
 </svg>
 Create Course</h2> */}
       <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse} />
-      <div id='animation-container' style={{ minHeight: '85vh', width: '100%' }}>
-        <form className="flex flex-col md:flex-row bg-gray-00 w-full " onSubmit={handleSubmit} >
-          <div className="w-full p-2 pt-2">
+      <div id='animation-container' style={{ minHeight: '85vh', width: '100%', }}>
+        <form className="flex flex-col md:flex-row bg-gray-00 w-full " onSubmit={handleSubmit}  >
+          <div className="w-full p-2 pt-2" >
             <div className="mt-2 px-16">
               <label htmlFor="courseTitle" className="block text-md font-bold font-medium leading-6 text-gray-900 " style={{ textAlign: 'left' }}>
                 Course Title

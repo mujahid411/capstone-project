@@ -13,18 +13,22 @@ const MyCourses = () => {
     const [home,setHome] = useState(false);
     const [createCourse,setCreateCourse] = useState(false);
     const [mycourses,setCourses] = useState(true);
+  
     // async function getUserId(){
     //     let id = await user._id
     //     console.log(id,'userid')
     // }
     // let id = user._id
     // console.log(user._id)
+   
 
 
     useEffect(()=>{
+      
         // getUserId()
+       
         async function myCourses(){
-            try {
+          try {
                 let response = await axios.get('/api/teacher/mycourses',{
                     params:{
                         id
@@ -49,7 +53,10 @@ const MyCourses = () => {
     <div>
         <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
  <h1 style={{textAlign:'initial',paddingLeft:'2rem',paddingTop:'1rem'}}>Your Courses</h1>
+
  <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses} />
+
+
     </div>
   )
 }

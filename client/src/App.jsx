@@ -31,6 +31,7 @@ import StudentProfile from './components/StudentProfile';
 import MyCourses from './components/MyCourses';
 import Check from './components/Check';
 import SearchCourse from './components/SearchCourse';
+import StudentCart from './components/StudentCart';
 import('preline')
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
       <Route path='/mycourses/:id' element={<MyCourses/>}/>
       <Route path='/check' element={<Check/>}/>
       <Route path='/search/:courseName' element={<SearchCourse/>}/>
+      <Route path='/cart/:studentId' element={<StudentCart/>}/>
     </Routes>
 
   )

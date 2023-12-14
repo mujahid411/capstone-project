@@ -31,6 +31,7 @@ import {
     UserCircleIcon
 } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../Context";
 
 const navListMenuItems = [
     {
@@ -158,11 +159,14 @@ function NavListMenu() {
 }
 
 function NavList() {
+
+    const {user,userId} = useGlobalContext()
+    let id = user._id;
     return (
         <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
             <Typography
                 as="a"
-                href="/"
+                href="/studentMain"
                 variant="small"
                 color="blue-gray"
                 className="font-medium"
@@ -204,7 +208,7 @@ function NavList() {
             </Typography>
             <Typography
                 as="a"
-                href="#"
+                href={`/cart/${id}`}
                 variant="small"
                 color="blue-gray"
                 className="font-medium"
