@@ -26,7 +26,8 @@ let studentData = {
     password,
     mobileNumber,
     address,
-    role:'student'
+    role:'student',
+    // cart:[]
 }
 console.log(studentData)
 let studentDetails= new StudentModel(studentData)

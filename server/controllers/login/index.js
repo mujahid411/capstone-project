@@ -33,7 +33,8 @@ router.post('/loginUser',async(req,res)=>{
             userDetails:findStudent
         }
         let privatekey='codeforindia';
-        let role = findStudent.role
+        let role = findStudent.role;
+        
         var token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
         res.status(200).json({ success: 'Student logged in successfully', token,role});
        }

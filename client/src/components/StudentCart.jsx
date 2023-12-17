@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StudentNavBar from './StudentNavBar'
 import { useGlobalContext } from '../Context';
 import SingleCourse from './SingleCourse';
 
 const StudentCart = () => {
 
-    // const [allCourses, setAllCourses] = useState([]);
-    // const { user } = useGlobalContext();
-    // let cart = user.cart;
+    const [allCourses, setAllCourses] = useState([]);
+    const { user } = useGlobalContext();
+    // console.log(user);
+    useEffect(()=>{
+        // console.log(user)
+        // let cart = user.cart;
+        // console.log(cart);
+        
+    },[])
+    // console.log(cart);
     // setAllCourses(cart);
     // if (allCourses.length== 0) {
     //     return (
