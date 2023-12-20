@@ -7,7 +7,7 @@ import TeacherRegister from './components/TeacherRegister';
 import StudentRegister from './components/StudentRegister';
 import { BouncyCardsFeatures } from './components/AboutUs';
 import NavbarMain from './components/NavbarMain';
-import SideBar from './components/SideBar';
+import Modal from './components/Modal';
 import Test from './components/Test';
 import TeacherNavBar from './components/TeacherNavBar';
 import StudentNavBar from './components/StudentNavBar';
@@ -32,6 +32,7 @@ import MyCourses from './components/MyCourses';
 import Check from './components/Check';
 import SearchCourse from './components/SearchCourse';
 import StudentCart from './components/StudentCart';
+import Layout from './components/Layout';
 import('preline')
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
       <Route path='/studentRegister' element={<StudentRegister/>}/>
       <Route path='/about' element={<BouncyCardsFeatures/>}/>
       <Route path='/navbar' element={<NavbarMain/>}/>
-      <Route path='/sidebar' element={<SideBar/>}/>
+      <Route path='/Modal' element={<Modal/>}/>
       <Route path='/teacherNavbar' element={<TeacherNavBar/>}/>
       <Route path='/studentNavbar' element={<StudentNavBar/>}/>
       <Route path='/teacherProfile' element={<TeacherProfile/>}/>
@@ -71,6 +72,7 @@ function App() {
       <Route path='/check' element={<Check/>}/>
       <Route path='/search/:courseName' element={<SearchCourse/>}/>
       <Route path='/cart/:studentId' element={<StudentCart/>}/>
+      <Route path='/layout' element={<Layout/>}/>
     </Routes>
 
   )

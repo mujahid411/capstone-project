@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react'
-import SideBar from './SideBar';
+import Modal from './Modal';
 import StudentNavBar from './StudentNavBar';
 
 const StudentProfile = () => {
@@ -216,7 +216,7 @@ const StudentProfile = () => {
 
 
                     </form>
-                        <SideBar student={student} setStudent={setStudent} />
+                        <Modal student={student} setStudent={setStudent} />
 
 
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState,useEffect} from 'react'
 import TeacherNavBar from './TeacherNavBar';
-import SideBar from './SideBar';
+import Modal from './Modal';
 
 const TeacherProfile = () => {
     let token = localStorage.getItem('token');
@@ -245,7 +245,7 @@ const TeacherProfile = () => {
                 Update Profile
               </button>
             </div> */}
-            <SideBar teacher={teacher} setTeacher={setTeacher} />
+            <Modal teacher={teacher} setTeacher={setTeacher} />
           </form>
 
 

@@ -40,7 +40,6 @@ const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }
       }
     }
     if(student){
-      console.log('in student click')
 
       try {
         setIsOpen(false);
