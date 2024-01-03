@@ -87,16 +87,18 @@ const StudentProfile = () => {
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                                 Email
                             </label>
-                            <div className="mt-1">
+                            <div className="mt-1" >
                                 <input
                                     id="email"
                                     name="email"
                                     type="email"
                                     autoComplete="email"
                                     required
+                                    disabled
                                     value={student.email}
                                     onChange={handleChange}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6  p-2 px-3"
+                                    style={{cursor:'not-allowed'}}
                                 />
                             </div>
                         </div>
@@ -216,7 +218,7 @@ const StudentProfile = () => {
 
 
                     </form>
-                        <Modal student={student} setStudent={setStudent} />
+                    <Modal student={student} setStudent={setStudent} />
 
 
 

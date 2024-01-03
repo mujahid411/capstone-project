@@ -1,6 +1,6 @@
+import { AssemblyAI } from 'assemblyai'
 import express from 'express';
 import CourseModel from '../../models/CourseModel.js';
-import {OneAI} from 'oneai';
 
 const router = express.Router();
 
@@ -96,25 +96,33 @@ router.post('/updateCourse', async (req,res)=>{
 
 })
 
-router.get('/summary', async (req,res)=>{
+router.get('/transcription', async (req,res)=>{
    try {
 
-      const content = req.headers.content;
-      const oneai = new OneAI('61d6a4bf-c11f-4b1d-ba68-04b45d1c0b49');
+
+      const client = new AssemblyAI({
+        apiKey: "99624ecb550d4588855a75686d4fd726"
+      })
       
-      const pipeline = new oneai.Pipeline(
-         oneai.skills.summarize(),
-         {
-            multilingual:{
-               enabled:true
-            }
-         }
+      const audioUrl =
+        'https://res.cloudinary.com/drgqcwxq6/video/upload/v1702463386/videos/l68zsoqgf9zhv0rj5pps.mp4'
+      
+      const config = {
+        audio_url: audioUrl
+      }
+      
+      const run = async () => {
+        const transcript = await client.transcripts.create(config)
+      //   console.log(transcript)
+      //   console.log(transcript.text)
+        let transcribedText = transcript.text
+      res.status(200).json({success:'video transcribed',transcribedText});
+      }
+      
+       await run()
        
-      );
-      const output = await pipeline.run(content);
-      res.status(200).json({success:'video transcribed'});
       
-      console.log(output);
+      // console.log(output);
       // const pipeline = new oneai.Pipeline(
       //    oneai.skills.transcribe({ speaker_detection: true, }) );
       //    pipeline.runFile(content).then(console.log);
@@ -125,5 +133,7 @@ router.get('/summary', async (req,res)=>{
    }
 
 })
+
+
 
 export default router;
