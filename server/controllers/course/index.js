@@ -107,15 +107,22 @@ router.get('/transcription', async (req,res)=>{
       const audioUrl =
         'https://res.cloudinary.com/drgqcwxq6/video/upload/v1702463386/videos/l68zsoqgf9zhv0rj5pps.mp4'
       
-      const config = {
-        audio_url: audioUrl
+      
+      
+      const params = {
+        audio: audioUrl,
+        summarization: true,
+        summary_model: 'conversational',
+        summary_type: 'bullets_verbose',
+        speaker_labels:true,
+      //   dual_channel:true
       }
       
       const run = async () => {
-        const transcript = await client.transcripts.create(config)
+        const transcript = await client.transcripts.transcribe(params)
       //   console.log(transcript)
       //   console.log(transcript.text)
-        let transcribedText = transcript.text
+        let transcribedText = transcript.summary
       res.status(200).json({success:'video transcribed',transcribedText});
       }
       

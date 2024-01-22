@@ -80,19 +80,33 @@ const Layout = () => {
           </div>
           <div className="py-2 grid gap-2 pl-4">
             {/* <div> */}
-            <video width="100%" controls  className='p-0 px-0  py-1 sm:p-12 md:p-12 md:py-2 sm:pt-2 sm:pb-2'>
+            <video width="100%" controls  className='p-0 px-0  py-1 sm:p-12 md:p-20 md:py-2 sm:pt-2 sm:pb-2'>
                 <source src='https://res.cloudinary.com/drgqcwxq6/video/upload/v1703060840/videos/nf9wwjt8ca7nsjr0bc3z.mp4' type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-            <h1 className=" pl-0 text-xl font-semibold tracking-tight sm:pl-12">Chapter 1: Basics</h1>
+            <h1 className=" pl-0 text-xl font-semibold tracking-tight sm:pl-20">Chapter 1: Basics</h1>
             {/* <div className="bg-white min-h-[200px] flex items-center justify-center"> */}
       <button 
       onClick={handleClick}
-      className="px-6 py-2 font-medium bg-indigo-500 text-white w-fit transition-all md:ml-11 shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
-        Transcribe
+      className="px-3 py-2 font-medium bg-indigo-500 text-white w-fit transition-all md:ml-20 shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="inline w-5 h-5">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
+</svg>
+Summarize
       </button>
       {
-       loading ? <h2>Loading...</h2> : (!loading && transcription) && <div>
+       loading ? 
+       <div role="status" className="w-full animate-pulse pl-20 mt-1">
+           <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-100px mb-4"></div>
+           <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-100px mb-2.5"></div>
+           <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-100px mb-2.5"></div>
+           <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+           <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+           {/* <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div> */}
+           <span className="sr-only">Loading...</span>
+       </div>
+       
+        : (!loading && transcription) && <div className='pl-20 mt-1'>
        {transcription}
      </div>
       }

@@ -1,25 +1,28 @@
 // // npm install assemblyai
 
-import { AssemblyAI } from 'assemblyai'
+// import { AssemblyAI } from 'assemblyai'
 
-const client = new AssemblyAI({
-  apiKey: "99624ecb550d4588855a75686d4fd726"
-})
+// const client = new AssemblyAI({
+//   apiKey: "99624ecb550d4588855a75686d4fd726"
+// })
 
-const audioUrl =
-  'https://res.cloudinary.com/drgqcwxq6/video/upload/v1702463386/videos/l68zsoqgf9zhv0rj5pps.mp4'
+// const audioUrl =
+//   'https://res.cloudinary.com/drgqcwxq6/video/upload/v1702463386/videos/l68zsoqgf9zhv0rj5pps.mp4'
 
-const config = {
-  audio_url: audioUrl
-}
+// const config = {
+//   audio_url: audioUrl
+// }
 
-const run = async () => {
-  const transcript = await client.transcripts.create(config)
-  console.log(transcript)
-  console.log(transcript.text)
-}
 
-run()
+
+
+// const run = async () => {
+//   const transcript = await client.transcripts.create(config)
+//   console.log(transcript)
+//   console.log(transcript.text)
+// }
+
+// run()
 
 // Start by making sure the `assemblyai` package is installed.
 // If not, you can install it by running the following command:
@@ -80,29 +83,29 @@ run()
 
 // run()
 
-// import { AssemblyAI } from 'assemblyai'
+import { AssemblyAI } from 'assemblyai'
 
-// const client = new AssemblyAI({
-//   apiKey: '99624ecb550d4588855a75686d4fd726'
-// })
+const client = new AssemblyAI({
+  apiKey: '99624ecb550d4588855a75686d4fd726'
+})
 
-// const audioUrl =
-//   'https://res.cloudinary.com/drgqcwxq6/video/upload/v1702463386/videos/l68zsoqgf9zhv0rj5pps.mp4'
+const audioUrl =
+  'https://res.cloudinary.com/drgqcwxq6/video/upload/v1702463386/videos/l68zsoqgf9zhv0rj5pps.mp4'
 
-// const params = {
-//   audio: audioUrl,
-//   summarization: true,
-//   summary_model: 'conversational',
-//   summary_type: 'bullets_verbose',
-//   speaker_labels:true,
-// //   dual_channel:true
-// }
+const params = {
+  audio: audioUrl,
+  summarization: true,
+  summary_model: 'conversational',
+  summary_type: 'bullets_verbose',
+  speaker_labels:true,
+//   dual_channel:true
+}
 
-// const run = async () => {
-//   const transcript = await client.transcripts.transcribe(params)
+const run = async () => {
+  const transcript = await client.transcripts.transcribe(params)
 
-//   console.log(transcript.summary)
-// }
+  console.log(transcript.summary)
+}
 
-// run()
+run()
 

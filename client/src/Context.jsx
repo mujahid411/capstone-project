@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 
@@ -9,11 +10,24 @@ export const useGlobalContext = () => useContext(GlobalContext);
 const AppContext = ({ children }) => {
     const [user, setUser] = useState({});
     const [userId, setUserId] = useState('');
+    const [userAuth,setUserAuth] = useState(false)
+    const [login, setLogin] = useState(false)
+    const navigate = useNavigate()
+    let token = localStorage.getItem('token');
+
+
+     function checkUser(){
+        let token = localStorage.getItem('token');
+        if(!token){
+            navigate('/login')
+        }
+         
+     }
 
 
 
     useEffect(() => {
-        async function authTeacher() {
+        async function authUser() {
             try {
                 let token = localStorage.getItem('token')
 
@@ -35,11 +49,11 @@ const AppContext = ({ children }) => {
                 console.error(error)
             }
         }
-        authTeacher();
+        authUser();
     }, [user])
 
     return (
-        <GlobalContext.Provider value={{ user, setUser, userId }}>
+        <GlobalContext.Provider value={{ user, setUser, userId,userAuth,login,setLogin,setUserAuth,checkUser,navigate }}>
             {children}
         </GlobalContext.Provider>
     )

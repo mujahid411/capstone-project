@@ -2,11 +2,13 @@ import {useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import GoogleAuth from './GoogleAuth';
+import { useGlobalContext } from '../Context';
 
 const Login= () => {
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
+    let {login,setLogin,userAuth,setUserAuth} = useGlobalContext()
   
     const [userLoginData, setUserLoginData] = useState({
       name: '',
@@ -24,13 +26,18 @@ const Login= () => {
         ...userLoginData
        }) 
        let role = response.data.role;
+       setLogin(true)
        if(role=='student'){
         navigate('/studentMain');
         localStorage.setItem('token',response.data.token)
+        setUserAuth(true)
+        
        }
        if(role=='teacher'){
         navigate('/teacherMain');
         localStorage.setItem('token',response.data.token)
+        setUserAuth(true)
+
 
        }
      } catch (error) {

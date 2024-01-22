@@ -4,7 +4,6 @@ import Modal from './Modal';
 import StudentNavBar from './StudentNavBar';
 
 const StudentProfile = () => {
-    let token = localStorage.getItem('token');
     const [student, setStudent] = useState({})
     const [profile, setProfile] = useState(true);
     const [home, setHome] = useState(false);
@@ -98,7 +97,7 @@ const StudentProfile = () => {
                                     value={student.email}
                                     onChange={handleChange}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6  p-2 px-3"
-                                    style={{cursor:'not-allowed'}}
+                                    style={{ cursor: 'not-allowed' }}
                                 />
                             </div>
                         </div>

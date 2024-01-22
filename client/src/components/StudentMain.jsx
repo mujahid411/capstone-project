@@ -1,35 +1,43 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import StudentNavBar from './StudentNavBar'
 import Test from './Test'
 import SingleCourse from './SingleCourse'
 import { useGlobalContext } from '../Context'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const StudentMain = () => {
-  const {user,setUser} = useGlobalContext();
-  const [home,setHome] = useState(true)
-  const [profile,setProfile] = useState(false);
-    const [createCourse,setCreateCourse] = useState(false);
-    const [mycourses,setCourses] = useState(false);
+  const { user, setUser, userAuth, login, checkUser,navigate } = useGlobalContext();
+  // const navigate = useNavigate()
+  const [home, setHome] = useState(true)
+  const [profile, setProfile] = useState(false);
+  const [createCourse, setCreateCourse] = useState(false);
+  const [mycourses, setCourses] = useState(false);
+  
   let token = localStorage.getItem('token');
-  async function authTeacher(){
+  async function authTeacher() {
     try {
-      let response = await axios.get('/api/auth/verify',{
-          headers:{
-              token:token
-          }
-         })
-        //  let email = response.data.email;
-        //  console.log(email)
-        console.log(response.data)
+      let response = await axios.get('/api/auth/verify', {
+        headers: {
+          token: token
+        }
+      })
+
+      //  let email = response.data.email;
+      //  console.log(email)
+      // console.log(response.data)
     } catch (error) {
       console.error(error)
     }
   }
 
-  useEffect(()=>{
-      authTeacher()
-  },[])
+  useEffect(() => {
+    authTeacher()
+    checkUser()
+    // if(!token ){
+    //   navigate('/login')
+    // }
+  }, [])
   // const [allCourses, setAllCourses] = useState([]);
 
   // let getCourses = async () => {
@@ -103,7 +111,7 @@ const StudentMain = () => {
 
 
   }
-  const [selectedCategory, setSelectedCategory] = useState('All'); 
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const handleCategoryChange = (e) => {
     const category = e.target.value;
@@ -121,8 +129,8 @@ const StudentMain = () => {
   };
   return (
     <div>
-        <StudentNavBar/>
-        <div style={{ margin: '0.5%', marginTop: '1%' }}>
+      <StudentNavBar />
+      <div style={{ margin: '0.5%', marginTop: '1%' }}>
         <div className="relative w-full" style={{ marginTop: '1%' }}>
           <input type="search" onChange={handleSearchChange} id="search-dropdown" className="block p-2.5 w-full h-12 z-20 text-sm text-gray-900 bg-gray-10 rounded  border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-indigo-500" placeholder="Search courses..." required />
           <button onClick={handleSubmit} className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-indigo-600 rounded border border-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
@@ -148,12 +156,12 @@ const StudentMain = () => {
 
       </div>
 
-        {/* <Test/> */}
-        <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses}/>
-        <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses}/>
-        <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses}/>
-        <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses}/>
-        <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses}/>
+      {/* <Test/> */}
+      <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses} />
+      <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses} />
+      <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses} />
+      <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses} />
+      <SingleCourse allCourses={allCourses} setAllCourses={setAllCourses} />
     </div>
   )
 }

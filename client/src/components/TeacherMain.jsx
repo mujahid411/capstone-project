@@ -6,7 +6,8 @@ import axios from 'axios'
 import { useGlobalContext } from '../Context'
 
 const TeacherMain = () => {
-  const { user, setUser } = useGlobalContext();
+  const { user, setUser, checkUser } = useGlobalContext();
+  
   const [home, setHome] = useState(true)
   const [profile, setProfile] = useState(false);
   const [createCourse, setCreateCourse] = useState(false);
@@ -30,6 +31,7 @@ const TeacherMain = () => {
 
   useEffect(() => {
     authTeacher()
+    checkUser()
   }, [])
   const [allCourses, setAllCourses] = useState([]);
   const [course, setCourse] = useState([]);

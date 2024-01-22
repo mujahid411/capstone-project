@@ -3,11 +3,9 @@ import jwt from 'jsonwebtoken';
 const router = express.Router();
 router.get('/verify', async (req, res) => {
     try {
-        // console.log('in verify')
         let token = req.headers.token
         req.payload = jwt.verify(token, 'codeforindia');
         if (req.payload) {
-            // console.log(req.payload,'req.payload')
             return res.json(req.payload)
         }
     } catch (error) {
