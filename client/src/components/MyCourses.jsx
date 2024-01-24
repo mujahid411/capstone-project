@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useGlobalContext } from '../Context'
+import { useGlobalContext } from "../GlobalContext";
 import SingleCourse from './SingleCourse'
 import TeacherNavBar from './TeacherNavBar'
 import { useParams } from 'react-router-dom'

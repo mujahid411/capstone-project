@@ -3,7 +3,7 @@ import TeacherNavBar from './TeacherNavBar'
 import Test from './Test'
 import SingleCourse from './SingleCourse'
 import axios from 'axios'
-import { useGlobalContext } from '../Context'
+import { useGlobalContext } from "../GlobalContext";
 
 const TeacherMain = () => {
   const { user, setUser, checkUser } = useGlobalContext();

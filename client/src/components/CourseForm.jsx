@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import TeacherNavBar from './TeacherNavBar';
-import { useGlobalContext } from '../Context';
+import { useGlobalContext } from "../GlobalContext";
 
 const CourseForm = () => {
   const {user} = useGlobalContext()

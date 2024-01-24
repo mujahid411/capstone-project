@@ -1,39 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import StudentNavBar from './StudentNavBar'
-import { useGlobalContext } from '../Context';
+import React, { useEffect, useState } from 'react';
+import StudentNavBar from './StudentNavBar';
+import { useGlobalContext } from "../GlobalContext";
 import SingleCourse from './SingleCourse';
 
 const StudentCart = () => {
-
     const [allCourses, setAllCourses] = useState([]);
     const { user } = useGlobalContext();
-    // console.log(user);
-    useEffect(()=>{
-        // console.log(user)
-        // let cart = user.cart;
-        // console.log(cart);
-        
-    },[])
-    // console.log(cart);
-    // setAllCourses(cart);
-    // if (allCourses.length== 0) {
-    //     return (
-    //         <div>
-    //             <StudentNavBar />
+    let cart = user.cart;
 
-    //         </div>
-    //     )
-    // }
+    useEffect(() => {
+        setAllCourses(cart);
+    }, [cart]);
 
+    if (!allCourses || allCourses.length === 0) {
+        return (
+            <div>
+                <StudentNavBar />
+                <h1 className='m-10 p-10'>Your Cart is empty</h1>
+            </div>
+        )
+    }
+    
 
     return (
-
         <div>
             <StudentNavBar />
-            <h1 className='m-10 p-10'>Your Cart is empty</h1>
-           {/* <SingleCourse allCourses={allCourses}/> */}
+            <SingleCourse allCourses={allCourses} />
         </div>
-    )
+    );
 }
 
-export default StudentCart
+export default StudentCart;

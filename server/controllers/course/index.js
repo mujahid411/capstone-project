@@ -84,14 +84,9 @@ router.post('/updateCourse', async (req,res)=>{
    let updatedCourse = await CourseModel.updateOne({_id:courseId},
       {$set:updateData})
       res.send(updatedCourse);
-  
-    
-   //  console.log(find);
-   //  res.send(find);
    } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
-    
    }
 
 })
@@ -120,8 +115,7 @@ router.get('/transcription', async (req,res)=>{
       
       const run = async () => {
         const transcript = await client.transcripts.transcribe(params)
-      //   console.log(transcript)
-      //   console.log(transcript.text)
+      
         let transcribedText = transcript.summary
       res.status(200).json({success:'video transcribed',transcribedText});
       }
@@ -129,10 +123,7 @@ router.get('/transcription', async (req,res)=>{
        await run()
        
       
-      // console.log(output);
-      // const pipeline = new oneai.Pipeline(
-      //    oneai.skills.transcribe({ speaker_detection: true, }) );
-      //    pipeline.runFile(content).then(console.log);
+      
    } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });

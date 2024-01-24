@@ -3,7 +3,6 @@ const router = express.Router()
 import TeacherModel from '../../models/TeacherModel.js';
 import  jwt  from 'jsonwebtoken';
 import CourseModel from '../../models/CourseModel.js';
-// import { addCourseValidation, teacherRegisteration, userLoginValidations } from '../../middleware/validators/index.js';
 
 router.post('/teacherRegister',async(req,res)=>{
 try {
@@ -57,7 +56,7 @@ router.post('/teacherLogin',async(req,res)=>{
                 // location: location
             }
             let privatekey='codeforindia';
-            var token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
+            let token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
             res.status(200).json({ success: 'teacher logged in successfully', token ,role:findUser.role,status:true,teacher_id:findUser._id});
         }
     } catch (error) {

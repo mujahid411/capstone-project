@@ -2,7 +2,7 @@ import {useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import GoogleAuth from './GoogleAuth';
-import { useGlobalContext } from '../Context';
+import { useGlobalContext } from "../GlobalContext";
 
 const Login= () => {
     const navigate = useNavigate();

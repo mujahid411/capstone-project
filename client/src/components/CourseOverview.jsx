@@ -4,7 +4,7 @@ import TeacherNavBar from "./TeacherNavBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Check from "./Check";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../GlobalContext";
 import StudentNavBar from "./StudentNavBar";
 
 const CourseOverview = () => {

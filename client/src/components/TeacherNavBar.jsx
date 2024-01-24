@@ -31,7 +31,7 @@ import {
     UserCircleIcon
 } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../GlobalContext";
 
 const navListMenuItems = [
     {

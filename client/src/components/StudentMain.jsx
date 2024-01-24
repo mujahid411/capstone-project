@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import StudentNavBar from './StudentNavBar'
 import Test from './Test'
 import SingleCourse from './SingleCourse'
-import { useGlobalContext } from '../Context'
+import { useGlobalContext } from "../GlobalContext";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -34,9 +34,6 @@ const StudentMain = () => {
   useEffect(() => {
     authTeacher()
     checkUser()
-    // if(!token ){
-    //   navigate('/login')
-    // }
   }, [])
   // const [allCourses, setAllCourses] = useState([]);
 
