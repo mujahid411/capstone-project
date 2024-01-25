@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import TeacherNavBar from './TeacherNavBar';
 import { useGlobalContext } from "../GlobalContext";
+import Toast from "./Toast";
 
 const CourseForm = () => {
   const {user} = useGlobalContext()
@@ -10,7 +11,7 @@ const CourseForm = () => {
   const teacherName = user.name;
   const { courseId } = useParams();
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(null);
   const [img, setImg] = useState('');
   const [video, setVideo] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
@@ -34,6 +35,15 @@ const CourseForm = () => {
   let handleChange = (e) => {
     setCourseData({ ...courseData, [e.target.name]: e.target.value });
   }
+  const showToast = (message, duration = 2000) => {
+    setToast({ message });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setToast(null);
+        resolve();
+      }, 1000);
+    });
+  };
 
   let uploadFile = async (type, data) => {
     try {
@@ -107,7 +117,17 @@ const CourseForm = () => {
       courseChapters: [],
       courseQuiz: [],
     })
-    navigate('/teacherMain')
+    if (response.status === 200) {
+      await showToast(
+        "Course Created"
+      );
+      setTimeout(()=>{
+        navigate('/teacherMain')
+      },1000)
+  } else {
+      showToast("Something went wrong!");
+  }
+  
 
   }
   const handleSelectChange = (e) => {
@@ -416,6 +436,7 @@ Create Course</h2> */}
 
           </div>
         </form>
+        {toast && <Toast message={toast.message} onClose={toast.onClose} />}
       </div>
     </>
 

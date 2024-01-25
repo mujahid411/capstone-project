@@ -3,11 +3,11 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import GoogleAuth from './GoogleAuth';
 import { useGlobalContext } from "../GlobalContext";
+import Toast from "./Toast";
 
 const Login= () => {
     const navigate = useNavigate();
-    const [showAlert, setShowAlert] = useState(false);
-    const [successAlert, setSuccessAlert] = useState(false);
+    const [toast, setToast] = useState(null);
     let {login,setLogin,userAuth,setUserAuth} = useGlobalContext()
   
     const [userLoginData, setUserLoginData] = useState({
@@ -17,7 +17,16 @@ const Login= () => {
     let handleChange = (e) => {
       setUserLoginData({ ...userLoginData, [e.target.name]: e.target.value })
     }
-  
+
+    const showToast = (message, duration = 2000) => {
+        setToast({ message });
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            setToast(null);
+            resolve();
+          }, 1000);
+        });
+      };
   
     let handleSubmit = async (e) => {
       e.preventDefault();
@@ -28,20 +37,41 @@ const Login= () => {
        let role = response.data.role;
        setLogin(true)
        if(role=='student'){
-        navigate('/studentMain');
-        localStorage.setItem('token',response.data.token)
-        setUserAuth(true)
+        if (response.status === 200) {
+            await showToast(
+              "Login Successfull"
+            );
+            localStorage.setItem('token',response.data.token)
+            setUserAuth(true)
+            setTimeout(()=>{
+                navigate('/studentMain');
+            },2000)
+        } else {
+            showToast("Something went wrong!");
+        }
+        // navigate('/studentMain');
         
        }
        if(role=='teacher'){
-        navigate('/teacherMain');
-        localStorage.setItem('token',response.data.token)
-        setUserAuth(true)
+        if (response.status === 200) {
+            await showToast(
+              "Login Successfull"
+            );
+            localStorage.setItem('token',response.data.token)
+            setUserAuth(true)
+            setTimeout(()=>{
+                navigate('/teacherMain');
+            },2000)
+        } else {
+            showToast("Something went wrong!");
+        }
 
 
        }
      } catch (error) {
         console.error(error)
+        showToast("Something went wrong!");
+
      }
     }
 
@@ -114,6 +144,8 @@ const Login= () => {
                     <GoogleAuth/>
 
                 </div>
+                    <span className='mt-4 text-sm'>New user? <a href="/ask">Register</a></span>
+                    {toast && <Toast message={toast.message} onClose={toast.onClose} />}
             </div>
 
         </div>

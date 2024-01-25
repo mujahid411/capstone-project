@@ -11,6 +11,7 @@ const StudentCart = () => {
     useEffect(() => {
         setAllCourses(cart);
     }, [cart]);
+    
 
     if (!allCourses || allCourses.length === 0) {
         return (

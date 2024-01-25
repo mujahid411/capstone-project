@@ -46,7 +46,7 @@ const MyCourses = () => {
       return <div>
         <TeacherNavBar profile={profile} home={home} mycourses={mycourses} createCourse={createCourse}/>
  <h1 style={{textAlign:'initial',paddingLeft:'2rem',paddingTop:'1rem'}}>Your Courses</h1>
-        <h1>Loading...</h1>
+        <h1>No Courses Yet...</h1>
       </div>
     }
   return (

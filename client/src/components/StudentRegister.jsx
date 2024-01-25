@@ -1,68 +1,91 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GoogleAuth from './GoogleAuth';
+import Toast from "./Toast";
 
 const StudentRegister = () => {
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
-    const [successAlert, setSuccessAlert] = useState(false);
-  
+    const [toast, setToast] = useState(null);
+
     const [student, setStudent] = useState({
-      name: '',
-      email: '',
-      mobileNumber: '',
-      address: '',
-      password: '',
-      password2: '',
-     
+        name: '',
+        email: '',
+        mobileNumber: '',
+        address: '',
+        password: '',
+        password2: '',
+
     });
-    let handleChange = (e) => {
-      setStudent({ ...student, [e.target.name]: e.target.value })
-    }
-  
-  
-    let handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        let response = await axios.post(`/api/student/studentRegister`, {
-          ...student
+
+    const showToast = (message, duration = 3000) => {
+        setToast({ message });
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            setToast(null);
+            resolve();
+          }, 1000);
         });
-  
-  
-        navigate('/login');
-        console.log(response.data)
-        // if (response.data) {
-        //   setSuccessAlert(true)
-        //   setTimeout(() => {
-        //     setSuccessAlert(false)
-        //   }, 4000);
-        // }
-        // console.log(student);
-        // setStudent({
-        //   name: '',
-        //   lastName: '',
-        //   email: "",
-        //   mobileNumber: '',
-        //   address: '',
-        //   password: '',
-        //   password2: '',
-        //   description:''
-        // })
-        // setShowAlert(false);
-      } catch (error) {
-        console.log('this is a error')
-        console.error(error)
-        setShowAlert(!showAlert)
-        setTimeout(function () {
-          setShowAlert(false)
-        }, 4000)
-      }
+      };
+
+    let handleChange = (e) => {
+        setStudent({ ...student, [e.target.name]: e.target.value })
+    }
+
+
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let response = await axios.post(`/api/student/studentRegister`, {
+                ...student
+            });
+
+            if (response.status === 200) {
+                await showToast(
+                  "Registered Successfully"
+                );
+                setTimeout(()=>{
+                    navigate('/login');
+                },2000)
+            } else {
+                showToast("Something went wrong!");
+            }
+            console.log(response.data)
+           
+            // if (response.data) {
+            //   setSuccessAlert(true)
+            //   setTimeout(() => {
+            //     setSuccessAlert(false)
+            //   }, 4000);
+            // }
+            // console.log(student);
+            // setStudent({
+            //   name: '',
+            //   lastName: '',
+            //   email: "",
+            //   mobileNumber: '',
+            //   address: '',
+            //   password: '',
+            //   password2: '',
+            //   description:''
+            // })
+            // setShowAlert(false);
+        } catch (error) {
+            console.log('this is a error')
+            console.error(error)
+            showToast("Something went wrong!");
+            setShowAlert(!showAlert)
+            setTimeout(function () {
+                setShowAlert(false)
+            }, 4000)
+        }
     };
 
     return (
         <div>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 " id='flex-container'>
-            <div id='animation-contanier' style={{ marginBottom: '0' }}>
+                <div id='animation-contanier' style={{ marginBottom: '0' }}>
                     <div>
                         <a className="flex items-center ps-2.5 mb-3">
                             <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
@@ -72,7 +95,7 @@ const StudentRegister = () => {
                 </div>
 
                 <div className="mt-0 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-1"  onSubmit={handleSubmit}>
+                    <form className="space-y-1" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900" style={{ textAlign: 'initial', fontSize: '1.0rem' }}>
                                 Name
@@ -247,7 +270,7 @@ const StudentRegister = () => {
                         <div>
                             <button
                                 type="submit"
-                               
+
                                 className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 mt-4"
                                 style={{ fontSize: '1.0rem' }}
                             >
@@ -255,9 +278,13 @@ const StudentRegister = () => {
                             </button>
                         </div>
                     </form>
+                    {toast && <Toast message={toast.message} onClose={toast.onClose} />}
 
 
+                <div className="divider divider-error text-sm">OR</div>
+                <GoogleAuth />
                 </div>
+                <span className='mt-4 text-sm'>Already have an account? <a href="/login">Login</a></span>
             </div>
 
 

@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Toast from "./Toast";
 function TeacherRegister() {
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [successAlert, setSuccessAlert] = useState(false);
+  const [toast, setToast] = useState(null);
+  const showToast = (message, duration = 2000) => {
+    setToast({ message });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setToast(null);
+        resolve();
+      }, 1000);
+    });
+  };
 
   const [teacher, setTeacher] = useState({
     name: '',
@@ -28,7 +39,16 @@ function TeacherRegister() {
       });
 
 
-      navigate('/login');
+      if (response.status === 200) {
+        await showToast(
+          "Registered Successfully"
+        );
+        setTimeout(()=>{
+            navigate('/login');
+        },2000)
+    } else {
+        showToast("Something went wrong!");
+    }
       console.log(response.data)
       // if (response.data) {
       //   setSuccessAlert(true)
@@ -288,6 +308,9 @@ function TeacherRegister() {
 
 
         </div>
+        
+        <span className='mt-2'>Already have an account? <a href="/login">Login</a></span>
+        {toast && <Toast message={toast.message} onClose={toast.onClose} />}
       </div>
 
 
