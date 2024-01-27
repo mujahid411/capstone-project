@@ -6,7 +6,8 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
-    "oneai": "^0.8.4"
+    "oneai": "^0.8.4",
+    "stripe": "^14.14.0"
   },
   "name": "server",
   "version": "1.0.0",

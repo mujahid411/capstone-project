@@ -120,10 +120,9 @@ const CourseForm = () => {
     if (response.status === 200) {
       await showToast(
         "Course Created"
-      );
-      setTimeout(()=>{
+      )
+ 
         navigate('/teacherMain')
-      },1000)
   } else {
       showToast("Something went wrong!");
   }

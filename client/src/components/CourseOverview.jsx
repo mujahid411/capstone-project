@@ -6,31 +6,36 @@ import axios from "axios";
 import Check from "./Check";
 import { useGlobalContext } from "../GlobalContext";
 import StudentNavBar from "./StudentNavBar";
+import Toast from "./Toast";
+import {loadStripe} from '@stripe/stripe-js';
 
 const CourseOverview = () => {
+  const [toast, setToast] = useState(null);
   let {courseId} =useParams();
   let {user} = useGlobalContext()
   let role = user.role;
   let id = user._id
   let [courseData,setCourseData] = useState({});
-  const stats = [
-    {
-        data: "35K",
-        title: "Customers"
-    },
-    {
-        data: "10K+",
-        title: "Downloads"
-    },
-    {
-        data: "40+",
-        title: "Countries"
-    },
-    {
-        data: "30M+",
-        title: "Total revenue"
-    },
-]
+  const [checkResult, setCheckResult] = useState(null);
+//   const stats = [
+//     {
+//         data: "35K",
+//         title: "Customers"
+//     },
+//     {
+//         data: "10K+",
+//         title: "Downloads"
+//     },
+//     {
+//         data: "40+",
+//         title: "Countries"
+//     },
+//     {
+//         data: "30M+",
+//         title: "Total revenue"
+//     },
+// ]
+
   useEffect(()=>{
      async function fetchCourse(){
       try {
@@ -48,6 +53,16 @@ const CourseOverview = () => {
      fetchCourse()
   },[])
 
+  const showToast = (message, duration = 2000) => {
+    setToast({ message });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setToast(null);
+        resolve();
+      }, 1000);
+    });
+  };
+
   const addToCart = async()=>{
     try {
        let response = await axios.post('/api/student/addToCart',{courseData},{
@@ -56,9 +71,39 @@ const CourseOverview = () => {
         }
        })
        console.log(response);
+       if (response.status === 200) {
+        await showToast(
+          "Added to Cart"
+        );
+       
+      } else {
+        showToast("Something went wrong!");
+      }
+
     } catch (error) {
       console.error(error);
     }
+  }
+  const makePayment = async ()=>{
+    const stripe = await loadStripe('pk_test_51OMlc3SC1ryoYNe3cIVyBbPxpmMWCQVN7gwG1JhinGVis7px23qRr0H10OFs7aro0GU1XkuDsWJqM72qwOCj3v7E00b9WT4bEl');
+    const body ={
+      products:courseData,
+    }
+    const headers={
+      "Content-Type":"application/json"
+    }
+    const response = await axios.post('/api/courses/create-checkout-session',body,{
+      headers:headers
+    })
+    const session = response.data;
+    console.log(session)
+    const result = stripe.redirectToCheckout({
+      sessionId:session.id
+    })
+    console.log(result)
+    setCheckResult(result);
+    console.log(checkResult);
+
   }
   return (
     <>
@@ -95,8 +140,10 @@ const CourseOverview = () => {
           </span>
         </p>
         
-        <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95" >
-          Buy Now for ₹{courseData.coursePrice}.00
+        <button 
+        onClick={makePayment}
+        className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95" >
+          Enroll Now for ₹{courseData.coursePrice}.00
         </button>
         {role=='student'?<button
         onClick={addToCart}
@@ -105,6 +152,7 @@ const CourseOverview = () => {
         </button>:''}
 
       </div>
+      {toast && <Toast message={toast.message} onClose={toast.onClose} />}
       
     </section>  
     {/* <section className="py-10 "  style={{backgroundColor:'#F5F5F5 ',color:'black '}} >
