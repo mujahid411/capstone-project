@@ -52,6 +52,9 @@ const CourseOverview = () => {
      }
      fetchCourse()
   },[])
+  useEffect(()=>{
+    console.log('checking')
+  },[])
 
   const showToast = (message, duration = 2000) => {
     setToast({ message });
@@ -103,6 +106,9 @@ const CourseOverview = () => {
     console.log(result)
     setCheckResult(result);
     console.log(checkResult);
+    if(result){
+      const newResponse = await axios.get('/api/courses/check',result);
+    }
 
   }
   return (

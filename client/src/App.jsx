@@ -74,7 +74,9 @@ function App() {
       <Route path='/check' element={<Check/>}/>
       <Route path='/search/:courseName' element={<SearchCourse/>}/>
       <Route path='/cart/:studentId' element={<StudentCart/>}/>
-      <Route path='/layout' element={<Layout/>}/>
+      {/* <Route path='/layout' element={<Layout/>}/> */}
+      {/* <Route path='/layout/:courseId' element={<Layout/>}/> */}
+      <Route path='/layout/:courseId/:chapter' element={<Layout/>}/>
       <Route path='/success' element={<Success/>}/>
       <Route path='/cancel' element={<Cancel/>}/>
     </Routes>

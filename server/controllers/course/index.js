@@ -2,6 +2,7 @@ import { AssemblyAI } from 'assemblyai'
 import express from 'express';
 import CourseModel from '../../models/CourseModel.js';
 import Stripe  from 'stripe';
+import StudentModel from '../../models/StudentModel.js';
 
 const router = express.Router();
 
@@ -115,17 +116,21 @@ router.post('/create-checkout-session',async (req,res)=>{
          payment_method_types:['card'],
          line_items:lineItems,
          mode:'payment',
-         success_url:'http://127.0.0.1:5173/success',
+         success_url:`http://127.0.0.1:5173/layout/${products._id}/${0}`,
          cancel_url:'http://127.0.0.1:5173/cancel'
 
       })
-      console.log(session)
+      // console.log(session)
       res.send(session)
 
    } catch (error) {
       console.error(error)
       return res.status(500).json({ error: error });
    }
+})
+
+router.post('/coursePurchaseSuccess',async (req,res)=>{
+     
 })
 
 router.get('/transcription', async (req,res)=>{

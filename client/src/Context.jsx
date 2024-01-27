@@ -35,7 +35,7 @@ const AppContext = ({ children }) => {
                     let userDetails = userResponse.data
                     setUser(userDetails)
 
-                    console.log(userResponse.data, 'findTeacher')
+                    // console.log(userResponse.data, 'findTeacher')
 
                 } else if (details.role === 'teacher') {
                     let userResponse = await axios.get('/api/teacher/findTeacher', {
