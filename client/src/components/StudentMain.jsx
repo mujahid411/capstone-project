@@ -23,9 +23,7 @@ const StudentMain = () => {
         }
       })
 
-      //  let email = response.data.email;
-      //  console.log(email)
-      // console.log(response.data)
+     
     } catch (error) {
       console.error(error)
     }
@@ -33,26 +31,9 @@ const StudentMain = () => {
 
   useEffect(() => {
     authTeacher()
-    checkUser()
+    checkUser(user.role,'student');
   }, [])
-  // const [allCourses, setAllCourses] = useState([]);
 
-  // let getCourses = async () => {
-  //   try {
-  //     let response = await axios.get('/api/courses/getAllcourses');
-  //     // console.log(response.data);
-  //     let arr = response.data;
-  //     arr.reverse();
-  //     setAllCourses(arr);
-  //     allCourses.reverse()
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCourses();
-  // }, []);
 
   const [allCourses, setAllCourses] = useState([]);
   const [course, setCourse] = useState([]);
@@ -61,11 +42,9 @@ const StudentMain = () => {
   let getCourses = async () => {
     try {
       let response = await axios.get('/api/courses/getAllcourses');
-      // console.log(response.data);
       let arr = response.data;
       arr.reverse();
       setAllCourses(arr);
-      // allCourses.reverse()
       setCourse(arr)
     } catch (error) {
       console.error(error);
@@ -75,7 +54,6 @@ const StudentMain = () => {
   useEffect(() => {
     getCourses();
   }, []);
-  // let navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (e) => {
@@ -98,13 +76,11 @@ const StudentMain = () => {
       setAllCourses(course)
       return;
     }
-    // setSearchQuery(e.target.value);
     const filteredCourses = allCourses.filter((course) =>
       course.courseTitle.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setAllCourses(filteredCourses)
 
-    // navigate(`/search/${searchQuery}`)
 
 
   }
@@ -139,7 +115,6 @@ const StudentMain = () => {
         </div>
         <select onChange={handleCategoryChange}
           id="countries" className="bg-gray-10 border border-gray-300 text-gray-900 text-sm rounded focus:ring-indigo-500 focus:border-indigo-500 block w-full h-12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" style={{ marginTop: '0.5%' }}>
-          {/* <option selected>Filter Courses by Category</option> */}
           <option value="All">All Categories</option>
           <option value="Web Development">Web Development</option>
           <option value="Data Analytics">Data Analytics</option>

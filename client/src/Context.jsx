@@ -8,10 +8,13 @@ const AppContext = ({ children }) => {
     const [userAuth, setUserAuth] = useState(false)
     const [login, setLogin] = useState(false)
     const navigate = useNavigate()
-    function checkUser() {
+    function checkUser(userRole,role) {
         let token = localStorage.getItem('token');
         if (!token) {
             navigate('/login')
+        }
+        if(userRole!==role){
+            navigate('/login');
         }
     }
 

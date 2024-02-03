@@ -23,7 +23,7 @@ router.post('/loginUser',async(req,res)=>{
         }
         let privatekey='codeforindia';
         let role = findTeacher.role
-        var token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
+        let token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
         res.status(200).json({ success: 'teacher logged in successfully', token,role});
        }
        if(findStudent){
@@ -35,7 +35,7 @@ router.post('/loginUser',async(req,res)=>{
         let privatekey='codeforindia';
         let role = findStudent.role;
         
-        var token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
+        let token =jwt.sign(payload,privatekey,{expiresIn:'1d'});
         res.status(200).json({ success: 'Student logged in successfully', token,role});
        }
   
