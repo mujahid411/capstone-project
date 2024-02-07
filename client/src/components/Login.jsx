@@ -49,7 +49,6 @@ const Login= () => {
         } else {
             showToast("Something went wrong!");
         }
-        // navigate('/studentMain');
         
        }
        if(role=='teacher'){

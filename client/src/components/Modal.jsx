@@ -81,9 +81,7 @@ const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }
               <div className="bg-white w-16 h-16 mb-2 rounded-full text-3xl text-indigo-600 grid place-items-center mx-auto">
                 <FiAlertCircle />
               </div>
-              {/* <h3 className="text-3xl font-bold text-center mb-2">
-                ARE YOU SURE YOU WANT TO UPDATE YOUR PROFILE?
-              </h3> */}
+          
               <p className="p-10">
               ARE YOU SURE YOU WANT TO UPDATE YOUR PROFILE?
 

@@ -13,20 +13,8 @@ const MyCourses = () => {
     const [home,setHome] = useState(false);
     const [createCourse,setCreateCourse] = useState(false);
     const [mycourses,setCourses] = useState(true);
-  
-    // async function getUserId(){
-    //     let id = await user._id
-    //     console.log(id,'userid')
-    // }
-    // let id = user._id
-    // console.log(user._id)
-   
-
-
     useEffect(()=>{
-      
-        // getUserId()
-       
+             
         async function myCourses(){
           try {
                 let response = await axios.get('/api/teacher/mycourses',{
