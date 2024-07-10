@@ -141,7 +141,8 @@ const AddChapter = () => {
                                     name="chapterVideo"
                                     required
                                     onChange={handleVideoUpload}
-                                    type="video/mp4"
+                                    type="file"
+                                    accept="video/*"
                                     className="w-full h-11 rounded border-1 py-0  text-gray-900 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 text-lg p-1 mt-1 "
                                     style={{ border: '1px solid grey', marginBottom: '0', backgroundColor: '' }}
                                 />

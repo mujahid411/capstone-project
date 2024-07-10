@@ -11,10 +11,10 @@ const AppContext = ({ children }) => {
     function checkUser(userRole,role) {
         let token = localStorage.getItem('token');
         if (!token) {
-            navigate('/login')
+            // navigate('/login')
         }
         if(userRole!==role){
-            navigate('/login');
+            // navigate('/login');
         }
     }
 
